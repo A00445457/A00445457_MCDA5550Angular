@@ -2,22 +2,33 @@
 <div data-role="content">
   <form>
     <label for="name">Name:</label>
-    <input type='text' name='name' id='name'>
+    <input [(ngModel)]="universityName" type='text' name='name' id='name'>
     <label for="address">Address:</label>
-    <input type='text' name='address' id='address'>
+    <input [(ngModel)]="universityAddress" type='text' name='address' id='address'>
     <label for="phone">Phone:</label>
-    <input type="text" name='phone' id='phone'>
+    <input [(ngModel)]="universityPhone" type="text" name='phone' id='phone'>
     <br>
     <button (click)="saveInformation()">Save</button>
     <button (click)="deleteInformation()">Delete</button>
     <br><br>
     <label for="search">Search:</label>
-    <input type="text" name='search' id='search'>
+    <input [(ngModel)]="search" type="text" name='search' id='search'>
     <button (click)="searchInfo()">Search</button>
     <br>
     <button (click)="displayRecords()">Display records</button>
     <br>
-    <table id="displayTable">
+    <table id="displayTable" border="1px">
+      <!-- <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+      </tr> -->
+      <tr *ngFor="let university of universities">
+
+        <th>{{university.name}}</th>
+        <th>{{university.address}}</th>
+        <th>{{university.phone}}</th>
+      </tr>
     </table>
     <br><br>
   </form>
