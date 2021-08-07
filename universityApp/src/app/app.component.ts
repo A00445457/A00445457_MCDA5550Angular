@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { University } from './university';
 
 @Component({
@@ -13,6 +13,7 @@ export class AppComponent {
 
   }
   SERVER_URL = "http://dev.cs.smu.ca:8128";
+
   title = 'universityApp';
   universities = [new University("Name", "Address", "Phone")];
 
@@ -83,7 +84,17 @@ export class AppComponent {
 
   saveInformation() {
     if (this.validateUniversityInfo()) {
-
+      const httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      };
+      var university = {
+        name: this.universityName.replace(/^\s+|\s+$/g, ""),
+        address: this.universityAddress.replace(/^\s+|\s+$/g, ""),
+        phone: this.universityPhone.replace(/^\s+|\s+$/g, "")
+      };
+      this.http.post(this.SERVER_URL + "/saveuniversity", university, httpOptions).subscribe((response) => {
+        alert("Result saved successfully!");
+      }, error => alert('oops ' + error.responseText))
     }
   }
 
