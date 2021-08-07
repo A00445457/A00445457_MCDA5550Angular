@@ -100,6 +100,7 @@ export class AppComponent {
 
   deleteInformation() {
     if (this.validateUniversityInfo()) {
+      const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
       var university = {
         name: this.universityName.replace(/^\s+|\s+$/g, ""),
         address: this.universityAddress.replace(/^\s+|\s+$/g, ""),
@@ -107,6 +108,15 @@ export class AppComponent {
       };
       //first grab the name of the university
       var key = this.universityName.replace(/^\s+|\s+$/g, "");
+      this.http.post(this.SERVER_URL + '/delete/' + key, university, { headers, responseType: 'text' }).subscribe(
+        (response) => {
+          // response can contain the returned data from server
+          alert(response);
+        }, (error) => {
+          debugger;
+          alert('oops ' + error.responseText)
+        }
+      )
 
     }
   }
