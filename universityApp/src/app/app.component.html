@@ -18,13 +18,7 @@
     <button (click)="displayRecords()">Display records</button>
     <br>
     <table id="displayTable" border="1px">
-      <!-- <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Phone</th>
-      </tr> -->
       <tr *ngFor="let university of universities">
-
         <th>{{university.name}}</th>
         <th>{{university.address}}</th>
         <th>{{university.phone}}</th>
