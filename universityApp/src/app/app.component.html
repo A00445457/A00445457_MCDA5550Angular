@@ -1,33 +1,41 @@
-<div data-role="header">University App</div>
-<div data-role="content">
-  <form>
-    <label for="name">Name:</label>
-    <input [(ngModel)]="universityName" type='text' name='name' id='name'>
-    <label for="address">Address:</label>
-    <input [(ngModel)]="universityAddress" type='text' name='address' id='address'>
-    <label for="phone">Phone:</label>
-    <input [(ngModel)]="universityPhone" type="text" name='phone' id='phone'>
-    <br>
-    <button (click)="saveInformation()">Save</button>
-    <button (click)="deleteInformation()">Delete</button>
-    <br><br>
-    <label for="search">Search:</label>
-    <input [(ngModel)]="search" type="text" name='search' id='search'>
-    <button (click)="searchInfo()">Search</button>
-    <br>
-    <button (click)="displayRecords()">Display records</button>
-    <br>
-    <table id="displayTable" border="1px">
-      <tr *ngFor="let university of universities">
-        <th>{{university.name}}</th>
-        <th>{{university.address}}</th>
-        <th>{{university.phone}}</th>
-      </tr>
-    </table>
-    <br><br>
-  </form>
+<div class="form-content">
+  <h3>University App</h3>
+  <div>
+    <form>
+      <label class="form-check-label">Name:</label>
+      <input [(ngModel)]="universityName" type='text' name='name' id='name' class="form-control"
+        placeholder="University Name">
+      <label class="form-check-label">Address:</label>
+      <input [(ngModel)]="universityAddress" type='text' name='address' id='address' class="form-control"
+        placeholder="University Address">
+      <label class="form-check-label">Phone:</label>
+      <input [(ngModel)]="universityPhone" type="text" name='phone' id='phone' class="form-control"
+        placeholder="University Phone Number">
+      <br>
+      <div class="form-button mt-3">
+        <button class="btn btn-primary" (click)="saveInformation()">Save</button>
+        <button class="btn btn-primary" (click)="deleteInformation()">Delete</button>
+      </div>
+      <br><br>
+      <label class="form-check-label">Search:</label>
+      <input [(ngModel)]="search" type="text" name='search' id='search' class="form-control"
+        placeholder="Search University By Name">
+      <button class="btn btn-primary" (click)="searchInfo()">Search</button>
+      <br>
+      <button class="btn btn-primary" (click)="displayRecords()">Display records</button>
+      <br>
+      <table id="displayTable" border="1px">
+        <tr *ngFor="let university of universities">
+          <th>{{university.name}}</th>
+          <th>{{university.address}}</th>
+          <th>{{university.phone}}</th>
+        </tr>
+      </table>
+      <br><br>
+    </form>
 
-</div>
-<div data-role=footer data-id="persistent" data-position="fixed">
-  <h1>Developed by Wenshuo.</h1>
+  </div>
+  <div class="footer">
+    <p>Developed by Wenshuo.</p>
+  </div>
 </div>
